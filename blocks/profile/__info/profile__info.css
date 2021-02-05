@@ -1,0 +1,7 @@
+.profile__info{
+    max-width: 415px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 22px;
+    margin-bottom: 21px;
+}
