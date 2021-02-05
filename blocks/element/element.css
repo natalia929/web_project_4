@@ -1,0 +1,14 @@
+@import url(../element/__content/element__content.css);
+@import url(../element/__image/element__image.css);
+@import url(../element/__rectangle/element__rectangle.css);
+@import url(../element/__name/element__name.css);
+@import url(../element/__wrapper/element__wrapper.css);
+@import url(../element/__heart-icon/element__heart-icon.css);
+
+.element{
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    
+}

@@ -1,0 +1,8 @@
+.element__rectangle{
+    height: 361px;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
