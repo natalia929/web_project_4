@@ -7,4 +7,10 @@
     background-position: center;
     border: none;
     margin: 5px 3px 0 0;
+    background-color: unset;
 }
+
+.element__heart-icon:hover{
+    cursor: pointer;
+}
+

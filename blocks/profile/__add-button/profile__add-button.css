@@ -14,3 +14,8 @@
     top: 35px;
     left: 165px;
 }
+
+.profile__add-button:hover{
+    opacity: .6;
+    cursor: pointer;
+}
