@@ -31,3 +31,16 @@ form.addEventListener("submit", function(event){
     event.preventDefault(); 
 })
 
+const hearts = document.querySelectorAll('.element__heart-icon');
+
+
+hearts.forEach(x => x.addEventListener('click', (event) => {
+    const style = event.target.style;
+
+    if (style.backgroundImage) {
+        style.backgroundImage = '';
+    } else {
+        style.backgroundImage = 'url("images/heart_checked.svg")';
+    }
+}));
+

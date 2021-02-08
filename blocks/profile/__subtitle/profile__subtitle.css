@@ -9,3 +9,10 @@
     line-height: 22px;
     width: 100%;
 }
+
+@media screen and (max-width: 425px){
+    .profile__subtitle{
+        margin-top: 14px;
+       margin-bottom: 36px;
+    }
+}

@@ -3,4 +3,12 @@
 .elements{
     max-width: 880px;
     margin: 0 auto;
+    
+}
+
+@media screen and (max-width: 425px){
+    .elements{
+        margin-right: 19px;
+        margin-left: 19px;
+    }
 }

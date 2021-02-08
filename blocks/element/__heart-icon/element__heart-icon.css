@@ -1,6 +1,6 @@
 .element__heart-icon{
-    width: 21px;
-    height: 19px;
+    min-width: 21px;
+    min-height: 19px;
     padding: 0;
     background-image: url(../../../images/heart.svg);
     background-repeat: no-repeat;
@@ -8,6 +8,7 @@
     border: none;
     margin: 5px 3px 0 0;
     background-color: unset;
+    
 }
 
 .element__heart-icon:hover{

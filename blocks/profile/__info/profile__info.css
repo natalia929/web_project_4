@@ -5,3 +5,12 @@
     margin-top: 22px;
     margin-bottom: 21px;
 }
+
+@media screen and (max-width: 425px){
+    .profile__info{
+        margin-top: 0;
+        justify-content: center;
+        margin-bottom: 36px;
+        margin: auto;
+    }
+}

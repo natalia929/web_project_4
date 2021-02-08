@@ -1,5 +1,15 @@
 .logo{
-    max-width: 173px;
     width: 173px;
     margin-bottom: 41px;
+    display: block;
+  
+}
+
+@media screen and (max-width: 425px){
+    .logo{
+        width: 126px;
+        margin-left: 27px;
+        margin-bottom: 32px;
+    }
+
 }
