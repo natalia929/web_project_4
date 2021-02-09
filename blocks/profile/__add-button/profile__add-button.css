@@ -10,8 +10,7 @@
     background-position: center;
     border: 2px solid #FFF;
     border-radius: 2px;
-    margin-left: 165px;
-    margin-top: 35px;
+    margin-top: 38px;
     
 }
 
@@ -20,10 +19,11 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 425px){
+@media screen and (max-width: 550px){
     .profile__add-button{
         margin: 0;
         width: 100%;
     }
 
 }
+

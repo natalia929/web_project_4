@@ -1,41 +1,41 @@
-const editButton = document.querySelector(".profile__edit-button");
+let editButton = document.querySelector(".profile__edit-button");
 editButton.addEventListener("click", function(){
-    const popup = document.querySelector(".popup");
+    let popup = document.querySelector(".popup");
     popup.classList.add("popup_opened");
     
 })
 
-const closeIcon = document.querySelector(".popup__close-icon");
+let closeIcon = document.querySelector(".popup__close-icon");
 closeIcon.addEventListener("click", function(){
-    const popup = document.querySelector(".popup");
+    let popup = document.querySelector(".popup");
     popup.classList.remove("popup_opened");
     
 })
 
-const form = document.querySelector(".form");
+let form = document.querySelector(".form");
 
 form.addEventListener("submit", function(event){
     
-    const nameInput = document.querySelector(".form__input_type_name");
-    const jobInput = document.querySelector(".form__input_type_job");
+    let nameInput = document.querySelector(".form__input_type_name");
+    let jobInput = document.querySelector(".form__input_type_job");
 
-    const profileName = document.querySelector(".profile__title");
-    const profileJob = document.querySelector(".profile__subtitle");
+    let profileName = document.querySelector(".profile__title");
+    let profileJob = document.querySelector(".profile__subtitle");
 
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
 
-    const popup = document.querySelector(".popup");
+    let popup = document.querySelector(".popup");
     popup.classList.remove("popup_opened");
     
     event.preventDefault(); 
 })
 
-const hearts = document.querySelectorAll('.element__heart-icon');
+let hearts = document.querySelectorAll('.element__heart-icon');
 
 
 hearts.forEach(x => x.addEventListener('click', (event) => {
-    const style = event.target.style;
+    let style = event.target.style;
 
     if (style.backgroundImage) {
         style.backgroundImage = '';
