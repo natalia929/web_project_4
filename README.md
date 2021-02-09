@@ -1,16 +1,22 @@
 # Project 4: Around The U.S.
 
-### Overview
+This is a project about traveling across the US. 
 
-* Figma
-* Images
+Used technologies:
+* HTML
+* CSS
+* BEM methodology
+* JavaScript
+* Web page built based on Firgma project 
 
-**Figma**
+## Link to the project
+(https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
 
-* [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
 
-**Images**
+Project uses HTML sematic elements to define different parts of the web page. The website's layout and style is controled by CSS. BEM methodology was applied to the class naming and file structure organization. The website is fully responsive and prepared to be rendered on devices with 320px 1280px.
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
+The web page contains clicable buttons, hover effects and allows a user to adjust rendered information. This is achieved by a pop-up form which appears when a user click on an edit button.
 
-Have fun with JavaScript!
+
+## Link to the website
+https://natalia929.github.io/web_project_4/.
