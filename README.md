@@ -9,7 +9,7 @@ Used technologies:
 * JavaScript
 * Web page built based on Firgma project 
 
-## Link to the project
+Link to the project
 (https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
 
 
