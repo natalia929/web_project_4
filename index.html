@@ -9,7 +9,6 @@
 <body class = "page">
     <header class = "header">
         <img src="./images/logo.svg" alt = "Around The U.S logo" class = "logo">
-        <div class = "header__line"></div>
     </header>
 
     <main class = "content">
@@ -18,66 +17,66 @@
                 <div class = "profile__image"><img src="./images/j_cousteau.jpg" alt = "Photo of Jacques Cousteau" class = "profile__avatar"></div>
                 <div class = "profile__info">
                     <h1 class = "profile__title">Jacques Cousteau</h1>
-                    <button class = "profile__edit-button"></button>
+                    <button class = "profile__edit-button" type="button"></button>
                     <p class = "profile__subtitle">Explorer</p>
                 </div>
             </div>
-            <button class = "profile__add-button"></button>
+            <button class = "profile__add-button" type="button"></button>
         </section>
         
         <section class = "elements">
             <ul class = "elements__list">
-                <li class = "element">
-                    <div class = "element__rectangle"></div>
+                <li class = "element element__rectangle">
+                    <!--<div class = "element__rectangle"></div>-->
                     <div class = "element__content">
                         <img src ="./images/Yosemite_Valley.jpg" alt = "Image of Yosemite Valley" class = "element__image">
                         <h2 class = "element__name">Yosemite Valley</h2> 
-                        <button class = "element__heart-icon"></button>
+                        <button class = "element__heart-icon" type="button"></button>
                     </div>        
                 </li>   
 
-                <li class = "element">
-                    <div class = "element__rectangle"></div>
+                <li class = "element element__rectangle">
+                    <!--<div class = "element__rectangle"></div>-->
                     <div class = "element__content">
                         <img src ="./images/Lake_Louise.jpg" alt = "Image of Lake Louise" class = "element__image">
                         <h2 class = "element__name">Lake Louise</h2>
-                        <button class = "element__heart-icon"></button>  
+                        <button class = "element__heart-icon" type="button"></button>  
                     </div>    
                 </li>     
             
-                <li class = "element">
-                    <div class = "element__rectangle"></div>
+                <li class = "element element__rectangle">
+                    <!--<div class = "element__rectangle"></div>-->
                     <div class= "element__content">
                         <img src ="./images/Bald_Mountains.jpg" alt = "Image of Bald Mountains" class = "element__image">
                             <h2 class = "element__name">Bald Mountains</h2>
-                            <button class = "element__heart-icon"></button>
+                            <button class = "element__heart-icon" type="button"></button>
                     </div>    
                 </li>
 
-                <li class = "element">
-                    <div class = "element__rectangle"></div>
+                <li class = "element element__rectangle">
+                    <!--<div class = "element__rectangle"></div>-->
                     <div class="element__content">
                         <img src ="./images/Latemar.jpg" alt = "Image of Latemar" class = "element__image">
                         <h2 class = "element__name">Latemar</h2>
-                        <button class = "element__heart-icon"></button>
+                        <button class = "element__heart-icon" type="button"></button>
                     </div>    
                 </li>    
             
-                <li class = "element">
-                    <div class = "element__rectangle"></div>
+                <li class = "element element__rectangle">
+                    <!--<div class = "element__rectangle"></div>-->
                     <div class="element__content">
                         <img src ="./images/Vanoise_National_Park.jpg" alt = "Image of Vanoise National Park" class = "element__image">
                         <h2 class = "element__name">Vanoise National Park</h2>
-                        <button class = "element__heart-icon"></button>  
+                        <button class = "element__heart-icon" type="button"></button>  
                     </div>   
                 </li>    
             
-                <li class = "element">
-                    <div class = "element__rectangle"></div>
+                <li class = "element element__rectangle">
+                    <!--<div class = "element__rectangle"></div>-->
                     <div class="element__content">
                         <img src ="./images/Lago_di_Braies.jpg" alt = "Image of Lago di Braies" class = "element__image">
                         <h2 class = "element__name">Lago di Braies</h2>
-                        <button class = "element__heart-icon"></button>
+                        <button class = "element__heart-icon" type="button"></button>
                     </div>    
                 </li>    
             </ul>
@@ -92,13 +91,11 @@
     </footer>
     <div class = "popup">
         <div class = "popup__container">
-            <button class="popup__close-icon" aria-label="Close"></button>
+            <button class="popup__close-icon" aria-label="Close" type="button"></button>
             <form class="form" action = "#">
                 <h2 class ="form__title">Edit profile</h2>
-                <input type="text" name = "name" class= "form__input form__input_type_name" placeholder="Name" value = "Jacques Cousteau">
-                <div class = "form__line"></div>
-                <input type="text" name = "details" class= "form__input form__input_type_job" placeholder="About me" value = "Explorer">
-                <div class = "form__line"></div>
+                <input type="text" name = "name" class= "form__input form__input_type_name form__line" placeholder="Name">
+                <input type="text" name = "details" class= "form__input form__input_type_job form__line" placeholder="About me">
                 <button class = "form__button" type = "submit">Save</button>
             </form>
         </div>
