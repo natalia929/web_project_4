@@ -1,6 +1,5 @@
 @import url(../element/__content/element__content.css);
 @import url(../element/__image/element__image.css);
-@import url(../element/__rectangle/element__rectangle.css);
 @import url(../element/__name/element__name.css);
 @import url(../element/__heart-icon/element__heart-icon.css);
 
@@ -11,7 +10,11 @@
     padding: 0;
     display: flex;
     position: relative;
-    
+    height: 361px;
+    background: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 1px solid #000;
 }
 
 @media screen and (max-width: 550px){
