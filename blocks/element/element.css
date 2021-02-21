@@ -2,6 +2,8 @@
 @import url(../element/__image/element__image.css);
 @import url(../element/__name/element__name.css);
 @import url(../element/__heart-icon/element__heart-icon.css);
+@import url(../element/__heart-icon/_active/element__heart-icon_active.css);
+@import url(../element/__delete-button/element__delete-button.css);
 
 
 .element{
