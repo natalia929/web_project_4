@@ -15,7 +15,7 @@ Link to the project
 
 Project uses HTML sematic elements to define different parts of the web page. The website's layout and style is controled by CSS. BEM methodology was applied to the class naming and file structure organization. The website is fully responsive and prepared to be rendered on devices with 320px 1280px.
 
-The web page contains clicable buttons, hover effects and allows a user to adjust rendered information. This is achieved by a pop-up form which appears when a user click on an edit button.
+The web page contains clicable buttons, hover effects and allows a user to adjust rendered information. This is achieved by pop-up forms which appear when a user click on an edit or add buttons. 
 
 
 ## Link to the website

@@ -10,10 +10,12 @@ const addButton = document.querySelector(".profile__add-button");
 const photosTemplate = document.querySelector(".photos-template").content.querySelector('.element');
 const photosList = document.querySelector(".elements__list");
 const popupAddButton = document.querySelector(".popup_type_add")
-const closeIconupAddButton = popupAddButton.querySelector(".popup__close-icon")
+const closeIconAddButton = popupAddButton.querySelector(".popup__close-icon")
 const formAddButton = document.querySelector(".form-addCard");
 const place = document.querySelector(".form__input_type_title");
 const url = document.querySelector(".form__input_type_link");
+const popupWindow = document.querySelector(".popup_type_image");
+const closeIconPopupWindow = popupWindow.querySelector(".popup__close-icon");
 
 
 function openPopup(model){
@@ -46,7 +48,7 @@ form.addEventListener("submit", function(event){
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
 
-    closePopup();
+    closePopup(popupEditButton);
 
     event.preventDefault(); 
 })
@@ -59,7 +61,7 @@ addButton.addEventListener("click", function(){
     
 })
 
-closeIconupAddButton.addEventListener("click", function(){
+closeIconAddButton.addEventListener("click", function(){
     closePopup(popupAddButton);
 })
 
@@ -94,51 +96,45 @@ const initialCards = [
     },
   ]; 
 
-initialCards.forEach(photo =>{
-    const photosElement = photosTemplate.cloneNode(true);
-    const photosImage = photosElement.querySelector(".element__image");
-    const photosName = photosElement.querySelector(".element__name");
-    const photosHeart = photosElement.querySelector(".element__heart-icon");
-    const photosDelete = photosElement.querySelector(".element__delete-button");
+  //Add cards 
+function addCard(placeLink, placeName){
+  const photosElement = photosTemplate.cloneNode(true);
+  photosElement.querySelector(".element__image").src = placeLink;
+  photosElement.querySelector(".element__name").textContent = placeName;
+  photosList.prepend(photosElement);
 
-    photosImage.src = photo.link;
-    photosName.textContent = photo.name;
+  const photosHeart = photosElement.querySelector(".element__heart-icon");
+  photosHeart.addEventListener("click", function (evt) {
+      evt.target.classList.toggle("element__heart-icon_active")
+  })
+  
+  const photosDelete = photosElement.querySelector(".element__delete-button");
+  photosDelete.addEventListener("click", () =>{
+      photosElement.remove()
+  })
 
-    photosHeart.addEventListener("click", function (evt) {
-        evt.target.classList.toggle("element__heart-icon_active")
-    })
+  const popupImage = document.querySelector(".element__image");
+  popupImage.addEventListener("click", () => {
+    popupWindow.querySelector(".popup__image").src = placeLink;
+    popupWindow.querySelector(".popup__image-name").textContent = placeName
+    openPopup(popupWindow);
+  
+  })
 
-    photosDelete.addEventListener("click", () =>{
-        photosElement.remove()
-    })
-
-    photosList.append(photosElement);
-
+  closeIconPopupWindow.addEventListener("click", function(){
+    closePopup(popupWindow);
 })
+
+}
+
+//Add initial photos
+initialCards.forEach(photo =>{
+    addCard(photo.link, photo.name);
+});
  
 
 
-//Add cards with more photos
-function addCard(placeLink, placeName){
-    const photosElement = photosTemplate.cloneNode(true);
-    photosElement.querySelector(".element__image").src = placeLink;
-    photosElement.querySelector(".element__name").textContent = placeName;
-    const photosHeart = photosElement.querySelector(".element__heart-icon");
-    photosList.prepend(photosElement);
-
-    photosHeart.addEventListener("click", function (evt) {
-        evt.target.classList.toggle("element__heart-icon_active")
-    })
-    
-    const photosDelete = photosElement.querySelector(".element__delete-button");
-    photosDelete.addEventListener("click", () =>{
-        photosElement.remove()
-    })
-}
-
 formAddButton.addEventListener("submit", function(event){
-    const place = document.querySelector(".form__input_type_title");
-    const url = document.querySelector(".form__input_type_link");
     addCard(url.value, place.value);
     closePopup(popupAddButton);
 
@@ -147,3 +143,4 @@ formAddButton.addEventListener("submit", function(event){
     
     event.preventDefault(); 
 })
+
