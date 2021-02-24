@@ -3,7 +3,7 @@ const nameInput = document.querySelector(".form__input_type_name");
 const jobInput = document.querySelector(".form__input_type_job");
 const popupEditButton = document.querySelector(".popup_type_edit");
 const closeIcon = document.querySelector(".popup__close-icon");
-const form = document.querySelector(".form");
+const formEditButton = document.querySelector(".form-editCard");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 const addButton = document.querySelector(".profile__add-button");
@@ -27,6 +27,10 @@ function closePopup(model){
     
 }
 
+function activeHeart(evt) {
+  evt.target.classList.toggle("element__heart-icon_active");
+}
+
 //Edit button
 editButton.addEventListener("click", function(){
     
@@ -36,21 +40,16 @@ editButton.addEventListener("click", function(){
     
 })
 
-
 closeIcon.addEventListener("click", function(){
     closePopup(popupEditButton);
 })
     
+formEditButton.addEventListener("submit", function(event){
+  event.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
 
-
-form.addEventListener("submit", function(event){
-    
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-
-    closePopup(popupEditButton);
-
-    event.preventDefault(); 
+  closePopup(popupEditButton);  
 })
 
 //Add button
@@ -65,82 +64,83 @@ closeIconAddButton.addEventListener("click", function(){
     closePopup(popupAddButton);
 })
 
-
-
-
-//Cards with initial photos
+//Initial cards
 const initialCards = [
-    {
-      name: "Yosemite Valley",
-      link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-    },
-    {
-      name: "Lake Louise",
-      link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-    },
-    {
-      name: "Bald Mountains",
-      link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-    },
-    {
-      name: "Latemar",
-      link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-    },
-    {
-      name: "Vanoise National Park",
-      link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-    },
-    {
-      name: "Lago di Braies",
-      link: "https://code.s3.yandex.net/web-code/lago.jpg"
-    },
-  ]; 
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+  },
+]; 
 
   //Add cards 
+
 function addCard(placeLink, placeName){
   const photosElement = photosTemplate.cloneNode(true);
   photosElement.querySelector(".element__image").src = placeLink;
+  photosElement.querySelector(".element__image").alt = `Photo of ${placeName}`;
   photosElement.querySelector(".element__name").textContent = placeName;
-  photosList.prepend(photosElement);
+  
 
   const photosHeart = photosElement.querySelector(".element__heart-icon");
-  photosHeart.addEventListener("click", function (evt) {
-      evt.target.classList.toggle("element__heart-icon_active")
-  })
+  photosHeart.addEventListener("click", activeHeart);
   
   const photosDelete = photosElement.querySelector(".element__delete-button");
   photosDelete.addEventListener("click", () =>{
-      photosElement.remove()
+    photosElement.remove()
   })
 
-  const popupImage = document.querySelector(".element__image");
+  const popupImage = photosElement.querySelector(".element__image");
   popupImage.addEventListener("click", () => {
     popupWindow.querySelector(".popup__image").src = placeLink;
+    popupWindow.querySelector(".popup__image").alt = `Photo of ${placeName}`;
     popupWindow.querySelector(".popup__image-name").textContent = placeName
     openPopup(popupWindow);
   
   })
 
-  closeIconPopupWindow.addEventListener("click", function(){
-    closePopup(popupWindow);
-})
-
+  return photosElement;
 }
 
 //Add initial photos
 initialCards.forEach(photo =>{
-    addCard(photo.link, photo.name);
+    const card = addCard(photo.link, photo.name);
+    photosList.prepend(card);
 });
  
-
-
 formAddButton.addEventListener("submit", function(event){
-    addCard(url.value, place.value);
-    closePopup(popupAddButton);
+  event.preventDefault(); 
+  const card = addCard(url.value, place.value);
+  photosList.prepend(card);
+  closePopup(popupAddButton);
 
-    url.value = "";
-    place.value = "";
+  url.value = "";
+  place.value = "";
     
-    event.preventDefault(); 
+})
+
+//Close pop-up photos
+
+closeIconPopupWindow.addEventListener("click", function(){
+  closePopup(popupWindow);
 })
 
