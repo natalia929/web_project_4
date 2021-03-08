@@ -1,0 +1,14 @@
+.form__error_visible{
+    color: red;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    position: relative;
+    top: -25px;
+}
+
+.form__error_visible:last-of-type{
+    top: -35px;
+}

@@ -32,7 +32,7 @@ function activeHeart(evt) {
 }
 
 //Edit button
-editButton.addEventListener("click", function(){
+editButton.addEventListener("click", () => {
     
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
@@ -40,7 +40,7 @@ editButton.addEventListener("click", function(){
     
 })
 
-closeIcon.addEventListener("click", function(){
+closeIcon.addEventListener("click", () => {
     closePopup(popupEditButton);
 })
     
@@ -54,13 +54,13 @@ formEditButton.addEventListener("submit", function(event){
 
 //Add button
 
-addButton.addEventListener("click", function(){
+addButton.addEventListener("click", () =>{
     
     openPopup(popupAddButton);
     
 })
 
-closeIconAddButton.addEventListener("click", function(){
+closeIconAddButton.addEventListener("click", () =>{
     closePopup(popupAddButton);
 })
 
@@ -140,7 +140,35 @@ formAddButton.addEventListener("submit", function(event){
 
 //Close pop-up photos
 
-closeIconPopupWindow.addEventListener("click", function(){
+closeIconPopupWindow.addEventListener("click", () => {
   closePopup(popupWindow);
 })
+
+  
+const popups = Array.from(document.querySelectorAll(".popup"));
+
+function closeAllPopups() {
+    popups.forEach((popup) => {
+        closePopup(popup);
+    });
+}
+
+document.addEventListener('keydown', evt => {
+    if (evt.key === "Escape") {
+        closeAllPopups();
+    }
+});
+
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", evt => {
+    if(evt.target.classList.contains("popup")){
+      closeAllPopups();
+    }
+    
+});
+});
+
+
+
 
