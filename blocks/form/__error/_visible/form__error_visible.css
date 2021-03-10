@@ -7,6 +7,8 @@
     line-height: 15px;
     position: relative;
     top: -25px;
+    margin-left: 36px;
+    
 }
 
 .form__error_visible:last-of-type{

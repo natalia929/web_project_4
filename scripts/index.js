@@ -16,15 +16,31 @@ const place = document.querySelector(".form__input_type_title");
 const url = document.querySelector(".form__input_type_link");
 const popupWindow = document.querySelector(".popup_type_image");
 const closeIconPopupWindow = popupWindow.querySelector(".popup__close-icon");
+const popupImage = popupWindow.querySelector(".popup__image");
+const popupImageName =  popupWindow.querySelector(".popup__image-name");
 
 
-function openPopup(model){
-    model.classList.add("popup_opened");
+//Close pop-up photos
+
+closeIconPopupWindow.addEventListener("click", () => {
+  closePopup(popupWindow);
+})
+
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
 }
 
-function closePopup(model){
-    model.classList.remove("popup_opened");
-    
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEscape);
+}
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape); 
 }
 
 function activeHeart(evt) {
@@ -92,12 +108,13 @@ const initialCards = [
   },
 ]; 
 
-  //Add cards 
+//Add cards 
 
 function addCard(placeLink, placeName){
   const photosElement = photosTemplate.cloneNode(true);
-  photosElement.querySelector(".element__image").src = placeLink;
-  photosElement.querySelector(".element__image").alt = `Photo of ${placeName}`;
+  const popupCard = photosElement.querySelector(".element__image");
+  popupCard.src = placeLink;
+  popupCard.alt = `Photo of ${placeName}`;
   photosElement.querySelector(".element__name").textContent = placeName;
   
 
@@ -109,13 +126,11 @@ function addCard(placeLink, placeName){
     photosElement.remove()
   })
 
-  const popupImage = photosElement.querySelector(".element__image");
-  popupImage.addEventListener("click", () => {
-    popupWindow.querySelector(".popup__image").src = placeLink;
-    popupWindow.querySelector(".popup__image").alt = `Photo of ${placeName}`;
-    popupWindow.querySelector(".popup__image-name").textContent = placeName
+  popupCard.addEventListener("click", () => {
+    popupImage.src = placeLink;
+    popupImage.alt = `Photo of ${placeName}`;
+    popupImageName.textContent = placeName;
     openPopup(popupWindow);
-  
   })
 
   return photosElement;
@@ -138,37 +153,16 @@ formAddButton.addEventListener("submit", function(event){
     
 })
 
-//Close pop-up photos
-
-closeIconPopupWindow.addEventListener("click", () => {
-  closePopup(popupWindow);
-})
-
-  
+//Close popup clicing on the overlay
 const popups = Array.from(document.querySelectorAll(".popup"));
-
-function closeAllPopups() {
-    popups.forEach((popup) => {
-        closePopup(popup);
-    });
-}
-
-document.addEventListener('keydown', evt => {
-    if (evt.key === "Escape") {
-        closeAllPopups();
-    }
-});
-
 
 popups.forEach((popup) => {
   popup.addEventListener("click", evt => {
     if(evt.target.classList.contains("popup")){
-      closeAllPopups();
-    }
-    
-});
-});
-
+      closePopup(evt.target);
+    } 
+  });
+})
 
 
 
