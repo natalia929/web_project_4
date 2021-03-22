@@ -1,3 +1,8 @@
+import {FormValidator} from "./FormValidator.js";
+import {Card} from "./Card.js";
+
+import{popupWindow, openPopup, closePopup} from "./helpers.js";
+
 const editButton = document.querySelector(".profile__edit-button");
 const nameInput = document.querySelector(".form__input_type_name");
 const jobInput = document.querySelector(".form__input_type_job");
@@ -14,11 +19,25 @@ const closeIconAddButton = popupAddButton.querySelector(".popup__close-icon")
 const formAddButton = document.querySelector(".form-addCard");
 const place = document.querySelector(".form__input_type_title");
 const url = document.querySelector(".form__input_type_link");
-const popupWindow = document.querySelector(".popup_type_image");
 const closeIconPopupWindow = popupWindow.querySelector(".popup__close-icon");
-const popupImage = popupWindow.querySelector(".popup__image");
-const popupImageName =  popupWindow.querySelector(".popup__image-name");
 
+
+//FormValidator
+const setting = {
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__button",
+  inactiveButtonClass: "form__button_disabled",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__error_visible"
+};
+
+const editFormValidator = new FormValidator(setting, formEditButton);
+
+const addFormValidator = new FormValidator(setting, formAddButton);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 //Close pop-up photos
 
@@ -26,26 +45,6 @@ closeIconPopupWindow.addEventListener("click", () => {
   closePopup(popupWindow);
 })
 
-function closeByEscape(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  }
-}
-
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEscape);
-}
-
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEscape); 
-}
-
-function activeHeart(evt) {
-  evt.target.classList.toggle("element__heart-icon_active");
-}
 
 //Edit button
 editButton.addEventListener("click", () => {
@@ -108,44 +107,17 @@ const initialCards = [
   },
 ]; 
 
-//Add cards 
-
-function addCard(placeLink, placeName){
-  const photosElement = photosTemplate.cloneNode(true);
-  const popupCard = photosElement.querySelector(".element__image");
-  popupCard.src = placeLink;
-  popupCard.alt = `Photo of ${placeName}`;
-  photosElement.querySelector(".element__name").textContent = placeName;
-  
-
-  const photosHeart = photosElement.querySelector(".element__heart-icon");
-  photosHeart.addEventListener("click", activeHeart);
-  
-  const photosDelete = photosElement.querySelector(".element__delete-button");
-  photosDelete.addEventListener("click", () =>{
-    photosElement.remove()
-  })
-
-  popupCard.addEventListener("click", () => {
-    popupImage.src = placeLink;
-    popupImage.alt = `Photo of ${placeName}`;
-    popupImageName.textContent = placeName;
-    openPopup(popupWindow);
-  })
-
-  return photosElement;
-}
-
 //Add initial photos
-initialCards.forEach(photo =>{
-    const card = addCard(photo.link, photo.name);
-    photosList.prepend(card);
+initialCards.forEach(place =>{
+    const card = new Card(place, ".photos-template");
+    photosList.prepend(card.getCard());
 });
  
 formAddButton.addEventListener("submit", function(event){
   event.preventDefault(); 
-  const card = addCard(url.value, place.value);
-  photosList.prepend(card);
+  const data = {name: place.value, link: url.value};
+  const card = new Card(data, ".photos-template");
+  photosList.prepend(card.getCard());
   closePopup(popupAddButton);
 
   url.value = "";
