@@ -1,4 +1,7 @@
 import {popupWindow, popupImage, popupImageName, openPopup} from "./helpers.js";
+import {Popup} from "./Popup.js";
+import {PopupWithForm} from "./PopupWithForm.js";
+import {PopupWithImage} from "./PopupWithImage";
 
 class Card {
     constructor(place, cardTemplate){

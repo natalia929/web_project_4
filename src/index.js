@@ -1,7 +1,14 @@
-import {FormValidator} from "./FormValidator.js";
-import {Card} from "./Card.js";
+import "./styles/index.css";
 
-import{popupWindow, openPopup, closePopup} from "./helpers.js";
+import {FormValidator} from "../scripts/FormValidator.js";
+import {Card} from "../scripts/Card.js";
+import {Section} from "../scripts/Section.js";
+
+import {Popup} from "../scripts/Popup.js";
+import {PopupWithForm} from "../scripts/PopupWithForm.js";
+import {PopupWithImage} from "../scripts/PopupWithImage";
+
+import{popupWindow, openPopup, closePopup, initialCards, cardListSection, profileName, profileJob} from "../scripts/helpers.js";
 
 const editButton = document.querySelector(".profile__edit-button");
 const nameInput = document.querySelector(".form__input_type_name");
@@ -9,8 +16,6 @@ const jobInput = document.querySelector(".form__input_type_job");
 const popupEditButton = document.querySelector(".popup_type_edit");
 const closeIcon = document.querySelector(".popup__close-icon");
 const formEditButton = document.querySelector(".form-editCard");
-const profileName = document.querySelector(".profile__title");
-const profileJob = document.querySelector(".profile__subtitle");
 const addButton = document.querySelector(".profile__add-button");
 const photosTemplate = document.querySelector(".photos-template").content.querySelector('.element');
 const photosList = document.querySelector(".elements__list");
@@ -47,6 +52,7 @@ closeIconPopupWindow.addEventListener("click", () => {
 
 
 //Edit button
+
 editButton.addEventListener("click", () => {
     
     nameInput.value = profileName.textContent;
@@ -67,7 +73,10 @@ formEditButton.addEventListener("submit", function(event){
   closePopup(popupEditButton);  
 })
 
-//Add button
+//Add button add new form card
+
+//const addCard = new PopupWithForm(formAddButton)
+
 
 addButton.addEventListener("click", () =>{
     
@@ -79,39 +88,19 @@ closeIconAddButton.addEventListener("click", () =>{
     closePopup(popupAddButton);
 })
 
-//Initial cards
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg"
-  },
-]; 
+//Add cards
 
-//Add initial photos
-initialCards.forEach(place =>{
+const cardList = new Section ({
+  items: initialCards,
+  renderer: (place) =>{
     const card = new Card(place, ".photos-template");
-    photosList.prepend(card.getCard());
-});
+    const cardElement = card.getCard();
+    cardList.addItem(cardElement);
+    },
+  },
+  cardListSection);
+ 
+cardList.renderItems();
  
 formAddButton.addEventListener("submit", function(event){
   event.preventDefault(); 
