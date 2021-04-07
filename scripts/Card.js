@@ -1,12 +1,11 @@
-import {popupWindow, popupImage, popupImageName, openPopup} from "./helpers.js";
-import {Popup} from "./Popup.js";
-import {PopupWithForm} from "./PopupWithForm.js";
-import {PopupWithImage} from "./PopupWithImage";
+import {popupImage, popupImageName} from "./helpers.js";
+
 
 class Card {
-    constructor(place, cardTemplate){
+    constructor(place, cardTemplate, handleCardClick){
         this._place = place;
         this._cardTemplate = cardTemplate;
+        this._handleCardClick = handleCardClick;
     }
         _getTemplate(){
             const photosTemplate = document.querySelector(this._cardTemplate).content.querySelector('.element');
@@ -26,7 +25,7 @@ class Card {
             popupImage.src = this._place.link;
             popupImage.alt = `Photo of ${this._place.name}`;
             popupImageName.textContent = this._place.name;
-            openPopup(popupWindow);
+            this._handleCardClick();
         }
 
         _setEventListeners(){

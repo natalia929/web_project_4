@@ -44,56 +44,63 @@ const addFormValidator = new FormValidator(setting, formAddButton);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-//Close pop-up photos
+//Pop-up photos
 
-closeIconPopupWindow.addEventListener("click", () => {
-  closePopup(popupWindow);
-})
+const imagePopup = new PopupWithImage(".popup_type_image");
+imagePopup.setEventListeners();
+
+// closeIconPopupWindow.addEventListener("click", () => {
+//   closePopup(popupWindow);
+// })
 
 
-//Edit button
+//Edit popup
 
-editButton.addEventListener("click", () => {
+// editButton.addEventListener("click", () => {
     
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileJob.textContent;
-    openPopup(popupEditButton);
+//     nameInput.value = profileName.textContent;
+//     jobInput.value = profileJob.textContent;
+//     openPopup(popupEditButton);
     
-})
+// })
 
-closeIcon.addEventListener("click", () => {
-    closePopup(popupEditButton);
-})
+// closeIcon.addEventListener("click", () => {
+//     closePopup(popupEditButton);
+// })
     
-formEditButton.addEventListener("submit", function(event){
-  event.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
+// formEditButton.addEventListener("submit", function(event){
+//   event.preventDefault();
+//   profileName.textContent = nameInput.value;
+//   profileJob.textContent = jobInput.value;
 
-  closePopup(popupEditButton);  
-})
+//   closePopup(popupEditButton);  
+// })
 
-//Add button add new form card
+const editPopup = new PopupWithForm(".popup_type_edit");
+editPopup.setEventListeners();
 
-//const addCard = new PopupWithForm(formAddButton)
+//Add popup
+
+const addCardPopup = new PopupWithForm(".popup_type_add");
+addCardPopup.setEventListeners();
 
 
-addButton.addEventListener("click", () =>{
+// addButton.addEventListener("click", () =>{
     
-    openPopup(popupAddButton);
+//     openPopup(popupAddButton);
     
-})
+// })
 
-closeIconAddButton.addEventListener("click", () =>{
-    closePopup(popupAddButton);
-})
+// closeIconAddButton.addEventListener("click", () =>{
+//     closePopup(popupAddButton);
+// })
 
 //Add cards
 
 const cardList = new Section ({
   items: initialCards,
   renderer: (place) =>{
-    const card = new Card(place, ".photos-template");
+    const card = new Card(place, ".photos-template",addCardPopup.open);
     const cardElement = card.getCard();
     cardList.addItem(cardElement);
     },
