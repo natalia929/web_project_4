@@ -8,7 +8,7 @@ import {Popup} from "../scripts/Popup.js";
 import {PopupWithForm} from "../scripts/PopupWithForm.js";
 import {PopupWithImage} from "../scripts/PopupWithImage";
 
-import{popupWindow, openPopup, closePopup, initialCards, cardListSection, profileName, profileJob} from "../scripts/helpers.js";
+import{popupWindow, initialCards, cardListSection, profileName, profileJob} from "../scripts/helpers.js";
 
 const editButton = document.querySelector(".profile__edit-button");
 const nameInput = document.querySelector(".form__input_type_name");
@@ -47,7 +47,10 @@ addFormValidator.enableValidation();
 //Pop-up photos
 
 const imagePopup = new PopupWithImage(".popup_type_image");
+imagePopup.open();
+imagePopup.close();
 imagePopup.setEventListeners();
+
 
 // closeIconPopupWindow.addEventListener("click", () => {
 //   closePopup(popupWindow);
@@ -77,6 +80,8 @@ imagePopup.setEventListeners();
 // })
 
 const editPopup = new PopupWithForm(".popup_type_edit");
+editPopup.open();
+editPopup.close();
 editPopup.setEventListeners();
 
 //Add popup
