@@ -37,7 +37,7 @@ class Card {
 
             photosDelete.addEventListener("click", (evt) =>{this._handlePhotoDelete(evt)});
 
-            popupCard.addEventListener("click", (evt) => {this._handlePreviewPopup(evt)});
+            popupCard.addEventListener("click", (evt) => {this._handleCardClick(this._place.link, this._place.name)});
         }
 
         getCard(){
