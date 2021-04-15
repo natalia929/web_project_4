@@ -86,6 +86,7 @@ editButton.addEventListener("click", () => {
   
 })
 
+
 //Add popup
 
 function submitAddForm(){
@@ -93,6 +94,9 @@ function submitAddForm(){
   const card = new Card(data, ".photos-template", imagePopup.open);
   photosList.prepend(card.getCard());
   addCardPopup.close();
+
+  url.value = ""; 
+  place.value = "";
 
 }
 
