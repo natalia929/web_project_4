@@ -1,4 +1,6 @@
-import "./pages/index.css";
+import "./index.css";
+import logoSrc from "../images/logo.svg";
+import profileSrc from "../images/j_cousteau.jpg"
 
 import {FormValidator} from "../components/FormValidator.js";
 import {Card} from "../components/Card.js";
@@ -10,6 +12,14 @@ import {PopupWithImage} from "../components/PopupWithImage.js";
 
 import{popupWindow, initialCards, cardListSection, profileName, profileJob} from "../components/helpers.js";
 
+//Logo and profile images
+const logoImage = document.getElementById("image-logo");
+logoImage.src = logoSrc; 
+
+const profileImage = document.getElementById("image-profile");
+profileImage.src = profileSrc;
+
+//
 const editButton = document.querySelector(".profile__edit-button");
 const nameInput = document.querySelector(".form__input_type_name");
 const jobInput = document.querySelector(".form__input_type_job");
@@ -67,8 +77,6 @@ function submitEditForm (){
 const editPopup = new PopupWithForm(".popup_type_edit", submitEditForm);
 
 editPopup.setEventListeners();
-editPopup.open();
-editPopup.close();
 
 editButton.addEventListener("click", () => {
     
@@ -86,16 +94,10 @@ function submitAddForm(){
   photosList.prepend(card.getCard());
   addCardPopup.close();
 
-  url.value = "";
-  place.value = "";
-  
 }
 
 const addCardPopup = new PopupWithForm(".popup_type_add",submitAddForm);
 addCardPopup.setEventListeners();
-addCardPopup.open();
-addCardPopup.close();
-
 
 addButton.addEventListener("click", () =>{
     

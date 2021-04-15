@@ -52,7 +52,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/pages/index.html" // path to our index.html file
+      template: "./src/index.html" // path to our index.html file
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin() // connect the plugin for merging CSS files

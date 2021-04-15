@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/natalia929/web_project_4#readme",
   "dependencies": {
-    "core-js": "^3.10.0"
+    "core-js": "^3.10.0",
+    "node": "^15.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
