@@ -1,6 +1,6 @@
 import "./index.css";
 import logoSrc from "../images/logo.svg";
-import profileSrc from "../images/j_cousteau.jpg"
+import profileSrc from "../images/j_cousteau.jpg";
 
 import {FormValidator} from "../components/FormValidator.js";
 import {Card} from "../components/Card.js";
@@ -68,40 +68,41 @@ closeIconPopupWindow.addEventListener("click", () => {
 
 //Edit popup form
 
-//function submitEditForm (){
-  //profileName.textContent = nameInput.value;
-  //profileJob.textContent = jobInput.value;
+let userInfo = new UserInfo({userName:"Jacques Cousteau", userJob:"Explorer"});
+userInfo.setUserInfo();
 
-  //editPopup.close();  
-//}
 
-const editPopup = new PopupWithForm({popupSelector: ".popup_type_edit", submitHandler: formData =>{
-  const userInfo = new UserInfo(formData.name, formData.job);
+const editPopup = new PopupWithForm(".popup_type_edit", (formData) =>{
+  userInfo = new UserInfo({userName:formData.name, userJob:formData.details});
   userInfo.setUserInfo();
-  }
+  editPopup.close();
+  
 });
 
 editPopup.setEventListeners();
 
 editButton.addEventListener("click", () => {
-    
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
+    const info = userInfo.getUserInfo();
+
+  nameInput.value = info.userName;
+
+  jobInput.value = info.userJob;
   editPopup.open();
   
 })
 
+function createNewCard(place){
+  const card = new Card(place, ".photos-template", imagePopup.open);
+  return card;
+}
 
 //Add popup
 
 function submitAddForm(){
   const data = {name: place.value, link: url.value};
-  const card = new Card(data, ".photos-template", imagePopup.open);
+  const card = createNewCard(data);
   photosList.prepend(card.getCard());
   addCardPopup.close();
-
-  url.value = ""; 
-  place.value = "";
 
 }
 
@@ -119,7 +120,7 @@ addButton.addEventListener("click", () =>{
 const cardList = new Section ({
   items: initialCards,
   renderer: (place) =>{
-    const card = new Card(place, ".photos-template",imagePopup.open);
+    const card = createNewCard(place);
     const cardElement = card.getCard();
     cardList.addItem(cardElement);
     },
