@@ -11,6 +11,7 @@ import {PopupWithForm} from "../components/PopupWithForm.js";
 import {PopupWithImage} from "../components/PopupWithImage.js";
 
 import{popupWindow, initialCards, cardListSection, profileName, profileJob} from "../components/helpers.js";
+import { UserInfo } from "../components/UserInfo";
 
 //Logo and profile images
 const logoImage = document.getElementById("image-logo");
@@ -67,14 +68,18 @@ closeIconPopupWindow.addEventListener("click", () => {
 
 //Edit popup form
 
-function submitEditForm (){
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
+//function submitEditForm (){
+  //profileName.textContent = nameInput.value;
+  //profileJob.textContent = jobInput.value;
 
-  editPopup.close();  
-}
+  //editPopup.close();  
+//}
 
-const editPopup = new PopupWithForm(".popup_type_edit", submitEditForm);
+const editPopup = new PopupWithForm({popupSelector: ".popup_type_edit", submitHandler: formData =>{
+  const userInfo = new UserInfo(formData.name, formData.job);
+  userInfo.setUserInfo();
+  }
+});
 
 editPopup.setEventListeners();
 
