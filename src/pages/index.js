@@ -10,7 +10,7 @@ import {Section} from "../components/Section.js";
 import {PopupWithForm} from "../components/PopupWithForm.js";
 import {PopupWithImage} from "../components/PopupWithImage.js";
 
-import{popupWindow, initialCards, cardListSection, profileName, profileJob} from "../components/helpers.js";
+import{popupWindow, initialCards, cardListSection, profileName, profileJob} from "../utils/helpers.js";
 import { UserInfo } from "../components/UserInfo";
 
 //Logo and profile images
@@ -98,8 +98,8 @@ function createNewCard(place){
 
 //Add popup
 
-function submitAddForm(){
-  const data = {name: place.value, link: url.value};
+function submitAddForm(placeInfo){
+  const data = {name: placeInfo.placeName, link: placeInfo.placeUrl};
   const card = createNewCard(data);
   photosList.prepend(card.getCard());
   addCardPopup.close();
@@ -107,6 +107,9 @@ function submitAddForm(){
 }
 
 const addCardPopup = new PopupWithForm(".popup_type_add",submitAddForm);
+  addCardPopup.close();
+
+
 addCardPopup.setEventListeners();
 
 addButton.addEventListener("click", () =>{
@@ -129,17 +132,7 @@ const cardList = new Section ({
  
 cardList.renderItems();
  
-//Close popup clicing on the overlay
-const popups = Array.from(document.querySelectorAll(".popup"));
 
-popups.forEach((popup) => {
-  popup.addEventListener("click", evt => {
-    if(evt.target.classList.contains("popup")){
-      imagePopup.close();
-      addCardPopup.close();
-    } 
-  });
-})
 
 
 

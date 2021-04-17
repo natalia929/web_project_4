@@ -1,4 +1,4 @@
-import {popupImage, popupImageName} from "./helpers.js";
+import {popupImage, popupImageName} from "../utils/helpers.js";
 
 
 class Card {
@@ -20,13 +20,13 @@ class Card {
             this._photosElement.remove();
         }
 
-        _handlePreviewPopup(){
+        // _handlePreviewPopup(){
             
-            popupImage.src = this._place.link;
-            popupImage.alt = `Photo of ${this._place.name}`;
-            popupImageName.textContent = this._place.name;
-            this._handleCardClick();
-        }
+        //     popupImage.src = this._place.link;
+        //     popupImage.alt = `Photo of ${this._place.name}`;
+        //     popupImageName.textContent = this._place.name;
+        //     this._handleCardClick();
+        // }
 
         _setEventListeners(){
             const photosHeart = this._photosElement.querySelector(".element__heart-icon");

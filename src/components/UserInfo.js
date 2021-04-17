@@ -1,4 +1,4 @@
-import {profileName, profileJob} from "./helpers";
+import {profileName, profileJob} from "../utils/helpers";
 
 class UserInfo{
    constructor ({userName, userJob}){
