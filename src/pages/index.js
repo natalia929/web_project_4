@@ -64,25 +64,34 @@ closeIconPopupWindow.addEventListener("click", () => {
 
 //Edit popup form
 
-let userInfo = new UserInfo({userName:"Jacques Cousteau", userJob:"Explorer"});
-userInfo.setUserInfo();
 
-const editPopup = new PopupWithForm(".popup_type_edit", (formData) =>{
-  const userInfo = new UserInfo({userName:formData.name, userJob:formData.details});
-  userInfo.setUserInfo();
+
+const userInfo = new UserInfo({userName: "Jacques Cousteau", userJob: "Explorer"});
+
+function updateUserProfile() {
+  const info = userInfo.getUserInfo();
+
+  profileName.textContent = info.userName;
+  profileJob.textContent = info.userJob;
+}
+
+updateUserProfile();
+
+const editPopup = new PopupWithForm(".popup_type_edit", (formData) => {
+  userInfo.setUserInfo({userName: formData.name, userJob: formData.details});
+  updateUserProfile();
   editPopup.close();
 });
 
 editPopup.setEventListeners();
 
 editButton.addEventListener("click", () => {
-    const info = userInfo.getUserInfo();
+  const info = userInfo.getUserInfo();
 
   nameInput.value = info.userName;
-
   jobInput.value = info.userJob;
+
   editPopup.open();
-  
 })
 
 function createNewCard(place){
@@ -100,16 +109,15 @@ function submitAddForm(placeInfo){
 
 }
 
-const addCardPopup = new PopupWithForm(".popup_type_add",submitAddForm);
+const addCardPopup = new PopupWithForm(".popup_type_add", submitAddForm);
   addCardPopup.close();
 
+  addCardPopup.setEventListeners();
 
-addCardPopup.setEventListeners();
-
-addButton.addEventListener("click", () =>{
+  addButton.addEventListener("click", () =>{
     
   addCardPopup.open();
-})
+});
 
 
 //Add cards

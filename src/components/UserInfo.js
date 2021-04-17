@@ -10,9 +10,9 @@ class UserInfo{
         return({userName: this._userName, userJob: this._userJob});
    }
 
-   setUserInfo(){
-        profileName.textContent = this._userName;
-        profileJob.textContent = this._userJob;
+   setUserInfo({userName, userJob}) {
+     this._userName = userName;
+     this._userJob = userJob;
    }
 }
 
