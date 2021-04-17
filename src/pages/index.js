@@ -1,5 +1,4 @@
 import "./index.css";
-import logoSrc from "../images/logo.svg";
 import profileSrc from "../images/j_cousteau.jpg";
 
 import {FormValidator} from "../components/FormValidator.js";
@@ -13,10 +12,7 @@ import {PopupWithImage} from "../components/PopupWithImage.js";
 import{popupWindow, initialCards, cardListSection, profileName, profileJob} from "../utils/helpers.js";
 import { UserInfo } from "../components/UserInfo";
 
-//Logo and profile images
-const logoImage = document.getElementById("image-logo");
-logoImage.src = logoSrc; 
-
+//Profile images
 const profileImage = document.getElementById("image-profile");
 profileImage.src = profileSrc;
 
@@ -71,12 +67,10 @@ closeIconPopupWindow.addEventListener("click", () => {
 let userInfo = new UserInfo({userName:"Jacques Cousteau", userJob:"Explorer"});
 userInfo.setUserInfo();
 
-
 const editPopup = new PopupWithForm(".popup_type_edit", (formData) =>{
-  userInfo = new UserInfo({userName:formData.name, userJob:formData.details});
+  const userInfo = new UserInfo({userName:formData.name, userJob:formData.details});
   userInfo.setUserInfo();
   editPopup.close();
-  
 });
 
 editPopup.setEventListeners();
@@ -101,7 +95,7 @@ function createNewCard(place){
 function submitAddForm(placeInfo){
   const data = {name: placeInfo.placeName, link: placeInfo.placeUrl};
   const card = createNewCard(data);
-  photosList.prepend(card.getCard());
+  cardList.addItem(card.getCard());
   addCardPopup.close();
 
 }
